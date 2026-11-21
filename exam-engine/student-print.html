@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="same-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'" />
+    <title>学生练习卷</title>
+    <link rel="stylesheet" href="./student-print.css" />
+    <script src="./student-print.js" defer></script>
+  </head>
+  <body>
+    <main class="student-sheet" aria-live="polite">
+      <header class="sheet-toolbar" data-sheet-toolbar>
+        <span>学生练习卷 · 不含答案与解析</span>
+        <div class="sheet-toolbar-actions"><a class="sheet-back" href="./index.html">返回教师题单</a><button type="button" data-sheet-retry hidden>重新载入</button><button type="button" data-sheet-pdf disabled>下载学生卷 PDF</button><button type="button" data-sheet-print disabled>题目载入后可打印</button></div>
+      </header>
+      <p class="sheet-asset-status" data-sheet-asset-status role="status"></p>
+      <section class="sheet-loading" data-sheet-loading>正在载入教师已确认的题目…</section>
+      <section class="sheet-error" data-sheet-error hidden></section>
+      <p class="sheet-print-warning" data-sheet-print-warning>本卷尚未完整载入，已暂停打印。请返回页面，等全部题图载入后再打印。</p>
+      <article class="sheet-content" data-sheet-content hidden></article>
+    </main>
+  </body>
+</html>

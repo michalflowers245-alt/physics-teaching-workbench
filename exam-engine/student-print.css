@@ -1,0 +1,56 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: #f4f6f8; color: #142033; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.student-sheet { max-width: 920px; margin: 0 auto; padding: 20px; }
+.sheet-toolbar { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 12px; color: #526174; font-size: 14px; }
+.sheet-toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.sheet-toolbar button { border: 0; border-radius: 8px; background: #176a86; color: #fff; padding: 9px 14px; cursor: pointer; font: inherit; }
+.sheet-toolbar button:disabled { background: #a9b7c0; cursor: wait; }
+.sheet-asset-status { margin: 0 0 16px; font-size: 14px; color: #526174; }
+.sheet-loading, .sheet-error, .sheet-content { background: #fff; border: 1px solid #dce4eb; border-radius: 12px; padding: 28px; }
+.sheet-error { color: #a33b34; margin-bottom: 16px; }
+.sheet-print-warning { display: none; }
+.student-sheet-title { margin: 0 0 8px; text-align: center; font-size: 24px; }
+.student-sheet-identity { margin: 16px 0; text-align: center; line-height: 1.8; font-size: 14px; }
+.student-sheet-note { margin: 0 0 22px; color: #64748b; text-align: center; }
+.student-question { padding: 18px 0 30px; border-top: 1px solid #e7edf1; }
+.student-question:first-of-type { border-top: 0; }
+.student-question-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; margin: 0 0 12px; font-size: 17px; break-after: avoid; page-break-after: avoid; }
+.student-source-number { color: #697586; font-size: 12px; font-weight: normal; }
+.student-stem { white-space: pre-wrap; font-size: 16px; line-height: 1.8; orphans: 3; widows: 3; }
+.student-option { margin: 6px 0; line-height: 1.7; break-inside: avoid; page-break-inside: avoid; }
+.student-question-fragment { margin: 14px 0; break-inside: avoid; page-break-inside: avoid; }
+.student-question-image { display: block; width: 100%; height: auto; object-fit: contain; }
+.student-continuation { margin-bottom: 5px; color: #697586; font-size: 12px; }
+.student-ocr-reference { margin: 18px 0; padding: 12px; background: #f6f8fa; border: 1px solid #dce4eb; border-radius: 8px; }
+.student-ocr-reference summary { cursor: pointer; color: #526174; }
+.student-ocr-reference .student-stem { margin-top: 12px; }
+.student-table-wrap { margin: 14px 0; overflow-x: auto; }
+.student-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.student-table th, .student-table td { border: 1px solid #aab7c1; padding: 7px 9px; text-align: center; }
+.student-table th { background: #eef4f6; }
+.student-table tr { break-inside: avoid; page-break-inside: avoid; }
+.student-table thead { display: table-header-group; }
+.student-answer-space { min-height: 96px; margin-top: 18px; padding-top: 7px; border-bottom: 1px dotted #9aa7b1; color: #738093; break-inside: avoid; page-break-inside: avoid; }
+@page { size: A4; margin: 15mm 14mm; }
+@media (max-width: 600px) {
+  .student-sheet { padding: 12px; }
+  .sheet-toolbar { align-items: flex-start; flex-direction: column; }
+  .sheet-content { padding: 16px; }
+  .student-sheet-identity { text-align: left; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .student-sheet { max-width: none; margin: 0; padding: 0; }
+  .sheet-toolbar, .sheet-asset-status, .sheet-loading, .sheet-error, .student-ocr-reference { display: none !important; }
+  .sheet-content { border: 0; border-radius: 0; padding: 0; }
+  .student-question { break-inside: auto; page-break-inside: auto; }
+  .student-question-fragment { margin: 0 0 2mm; }
+  .student-continuation { margin-bottom: 1mm; font-size: 8pt; line-height: 1.1; }
+  .student-question-image { width: 100%; max-width: none; height: auto; max-height: none; }
+  .student-table-wrap { overflow: visible; }
+  .sheet-not-ready .sheet-content { display: none !important; }
+  .sheet-not-ready .sheet-print-warning { display: block; padding: 20mm 0; font-size: 18px; line-height: 1.8; }
+}
+.sheet-back { color: #176b5c; text-decoration: none; font-size: 13px; white-space: nowrap; }

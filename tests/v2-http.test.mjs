@@ -1,0 +1,22 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {spawn} from 'node:child_process';
+test('HTTP本机保护、静态允许列表、CAS与健康接口',async t=>{
+  const dir=mkdtempSync(join(tmpdir(),'physics-http-')),port=4194,child=spawn(process.execPath,['local-server.mjs'],{cwd:new URL('..',import.meta.url),env:{...process.env,PORT:String(port),PANEL_DATA_DIR:dir},stdio:['ignore','pipe','pipe']});
+  t.after(async()=>{child.kill('SIGTERM');await new Promise(r=>child.once('exit',r));rmSync(dir,{recursive:true,force:true});});
+  await new Promise((resolve,reject)=>{child.stdout.once('data',resolve);child.once('error',reject);child.stderr.once('data',b=>reject(new Error(b.toString())));});
+  const url='http://127.0.0.1:'+port;
+  for(const path of ['/.env.local','/data/workbench.sqlite','/data/panel-state.json','/server/store.mjs','/client/../.env.local','/client/..%2f.env.local','/vendor/..%2fdata/workbench.sqlite','/data/backups/manifest.json'])assert.equal((await fetch(url+path)).status,404,path);
+  assert.equal((await fetch(url+'/api/panel-state',{headers:{Origin:'https://malicious.example'}})).status,403);
+  const d=await (await fetch(url+'/api/panel-state')).json();
+  assert.equal((await fetch(url+'/api/panel-state',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:d.state})})).status,428);
+  const save=()=>fetch(url+'/api/panel-state',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:d.state,expectedRevision:d.revision})});
+  assert.equal((await save()).status,200);assert.equal((await save()).status,409);
+  const health=await (await fetch(url+'/api/health')).json();assert.equal(health.database,'SQLite');assert.equal(health.localOnly,true);
+  const library=await (await fetch(url+'/api/physics-exam/library/stats')).json();assert.equal(library.total,0);assert.equal(library.searchMode.startsWith('fts5')||library.searchMode==='like',true);
+  const html=await (await fetch(url)).text();assert.ok(!html.includes('cdn.jsdelivr.net'));assert.equal((await fetch(url+'/vendor/pdf.min.js')).status,200);assert.equal((await fetch(url+'/client/application.mjs')).status,200);
+  for (const path of ['/exam-engine/student-print.html','/exam-engine/student-print.css','/exam-engine/student-print.js','/exam-engine/student-question-set.js']) assert.equal((await fetch(url+path)).status,200,path);
+});

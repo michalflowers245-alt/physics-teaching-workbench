@@ -1,0 +1,39 @@
+/* On-screen palette. The production stylesheet provides separate export colors. */
+:root {
+  color-scheme: dark;
+  --studio-canvas: #14171c;
+  --studio-paper: #1d2128;
+  --studio-well: #171b22;
+  --studio-raised: #262c37;
+  --studio-ink: #eceef3;
+  --studio-muted: #adb6c5;
+  --studio-subtle: #8c97ab;
+  --studio-rule: #343b48;
+  --studio-field-rule: #525d70;
+  --studio-rail: #171a20;
+  --studio-active: #252f40;
+  --studio-action: #b8caf7;
+  --studio-action-hover: #cfddff;
+  --studio-action-ink: #16213a;
+  --studio-dark: #171c25;
+  --studio-ivory: #f2f4f8;
+  --studio-focus: #bfd3ff;
+  --studio-success: #a5d0bb;
+  --studio-success-bg: #23362f;
+  --studio-warning: #dfc691;
+  --studio-warning-bg: #3b3226;
+  --studio-error: #fab7bb;
+  --studio-error-bg: #452c33;
+  --studio-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  --studio-heading: "Songti SC", "Noto Serif CJK SC", "STSong", var(--studio-sans);
+  --studio-display: Baskerville, "Iowan Old Style", Georgia, serif;
+  --studio-pad: clamp(20px, 3.2vw, 52px);
+  --studio-radius: 12px;
+  --studio-control-radius: 8px;
+  --studio-overlay-radius: 16px;
+  --studio-label-size: 13px;
+  --studio-control-size: 14px;
+  --studio-control-height: 42px;
+  --studio-panel-gap: clamp(14px, 1.6vw, 22px);
+  --studio-overlay-shadow: 0 16px 56px #080a0f96;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="same-origin" />
+    <title>长沙中考物理分析引擎</title>
+    <link rel="stylesheet" href="./engine.css?v=198-5" />
+    <link rel="stylesheet" href="../assets/editorial/tokens.css?v=198-5" />
+    <link rel="stylesheet" href="./engine-native.css?v=teacher-flow-1" />
+    <script src="/vendor/pdf.min.js" defer></script>
+    <script src="/vendor/pdf-lib.min.js" defer></script>
+    <script src="/vendor/jszip.min.js" defer></script>
+    <script src="./exam-domain.js" defer></script>
+    <script src="./exam-ingest.js" defer></script>
+    <script src="./exam-sync.js" defer></script>
+    <script src="./exam-training.js" defer></script>
+    <script src="./student-question-set.js" defer></script>
+    <script src="./physics-taxonomy.js" defer></script>
+    <script src="./question-overview.js?v=1" defer></script>
+    <script src="./exam-engine.js?v=teacher-flow-1" defer></script>
+    <script type="module" src="./host.mjs"></script>
+  </head>
+  <body class="physics-exam-frame">
+    <main id="exam-engine-app" aria-live="polite"></main>
+    <div class="physics-exam-toast-stack" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

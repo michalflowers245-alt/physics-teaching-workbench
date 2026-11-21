@@ -1,0 +1,8 @@
+.physics-exam-nav-group { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(126, 148, 177, .22); }
+.physics-exam-nav-group [data-physics-exam-launch] { width: 100%; }
+.physics-exam-workspace { width: min(1500px, calc(100vw - 28px)); height: min(960px, calc(100vh - 28px)); max-width: none; max-height: none; padding: 0; border: 1px solid #d7e0eb; border-radius: 16px; overflow: hidden; background: #f5f8fc; box-shadow: 0 28px 90px rgba(16, 37, 64, .32); }
+.physics-exam-workspace::backdrop { background: rgba(21, 35, 55, .42); backdrop-filter: blur(2px); }
+.physics-exam-workspace__bar { height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px; color: #eef5ff; background: #173b61; font-size: 13px; }
+.physics-exam-workspace__bar .ghost { border-color: rgba(255,255,255,.35); color: #fff; background: transparent; }
+.physics-exam-workspace iframe { display: block; width: 100%; height: calc(100% - 42px); border: 0; background: #f5f8fc; }
+@media (max-width: 720px) { .physics-exam-workspace { width: 100vw; height: 100vh; border: 0; border-radius: 0; } }

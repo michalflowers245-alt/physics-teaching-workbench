@@ -1,0 +1,16 @@
+.env
+.env.*
+.DS_Store
+.venv/
+.build-deps/
+node_modules/
+__pycache__/
+*.pyc
+data/
+output/
+tmp/
+*.log
+*.db
+*.sqlite*
+client/application.mjs
+native/panel-ocr
